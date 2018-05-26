@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="GBK">
+		<meta name="author" content="微普科技 http://www.wiipu.com" />
+		<title>jquery点击删除数据</title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+				background-color: #ddd;
+			}
+			.data {
+				width: 500px;
+				margin: 20px auto;
+				
+			}
+			.data li{
+				height:50px;
+				border-bottom:1px solid #c00;
+				line-height:50px;
+				position:relative;
+			}
+			.data button{
+				width:50px;
+				height:30px;
+				position:absolute;
+				right:0;
+				top:10px;
+			}
+			
+		</style>
+<style>
+            #box{
+                width:500px;
+                height: 400px;
+                background:lightgoldenrodyellow;
+                border:1px solid black;
+            }
+
+            #head_list input{//div是块级元素，定义为float后在宽度允许的情况下，能在一行内容纳
+                float:left;
+                width:25%;
+            }
+
+            .active{//初始及点击后的按钮类
+                color: cornflowerblue;
+            }
+        </style>
+		<script src="http://xiguape.wiipu.com/basecode/js/jquery.1.9.1.min.js"></script>
+		<script type="text/javascript">
+var row=10;//把5替换成要生成的行数。
+var Blank="　";//这儿如果用&nbsp生成的空格，并不会与*同样大，所以，就不好控制。现改为全角的空格，用于测试。
+var Str="★";//*号改为用五角星来测试
+for(r=0;r<row;r++){//循环行
+ 
+for(b=0;b<row-r-1;b++){//循环空格
+document.write(Blank);//输出空格
+}
+ 
+for(s=0;s<=r*2;s++){//循环字符(这儿是*)
+document.write(Str);//输出字符(这儿是*)
+}
+ 
+document.write("<br/>");//输出换行符
+}
+			$(document).ready(function (){
+				$(".data button").click(function(){
+					$(this).parents("li").remove();
+				})
+var i=0;
+				$("#dd").click(function(){
+					$("#bb").append("<div>"+ ++i +"</div>")
+})
+
+var oli = head_list.getElementsByTagName("input");//获取tab列表
+for(var i=0;i<oli.length;i++){
+	oli[i].onclick=function(){
+	alert(this.value)
+}
+}
+				
+			})
+		</script>
+	</head>
+	<body id="bb">
+		<div id='dd'>dd</div>
+		
+		<ul class="data">
+			<li>芝麻开发考核系统上线<button>删除1</button></li>
+			<li>芝麻开发向合作伙伴开放<button>删除2</button></li>
+			<li>芝麻开发上认证工作者数量超100人<button>删除3</button></li>
+			<li>自由工作平台正式改名为“芝麻开发”<button>删除4</button></li>
+		</ul>
+
+<div id="box">
+            <div id="head_list"">
+                <input type="button" value="菜单一"  class="active"/>
+                <input type="button" value="菜单二" />
+                <input type="button" value="菜单三" />
+                <input type="button" value="菜单四" />
+            </div>
+            <div id="menu_content">
+                <div style="display:block;">Hello,I am the first!</div>
+                <div style="display:none;">Hello,I am the seconed!</div>
+                <div style="display:none;">Hello,I am the third!</div>
+                <div style="display:none;">Hello,I am the forth!</div>
+            </div>
+        </div>
+</body>
+</html>
